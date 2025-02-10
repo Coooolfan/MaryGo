@@ -100,9 +100,3 @@ function navigateToSettings() {
     </div>
   </div>
 </template>
-
-<style scoped>
-.hover\:scale-102:hover {
-  transform: scale(1.02);
-}
-</style>
