@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -16,6 +16,7 @@
     "@nutui/nutui": "^4.3.13",
     "@tailwindcss/vite": "^4.0.5",
     "pinia": "^2.3.1",
+    "primeicons": "^7.0.0",
     "tailwindcss": "^4.0.5",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
