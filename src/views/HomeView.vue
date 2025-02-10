@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import GoMatchCard from '@/components/GoMatchCard.vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const avatarSrc = 'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png'
 // 获取当前时间，用于显示问候语
 const getGreeting = () => {
@@ -12,6 +14,22 @@ const getGreeting = () => {
   if (hour < 17) return '下午好'
   if (hour < 19) return '傍晚好'
   return '晚上好'
+}
+
+function navigateToRecord() {
+  router.push('/record')
+}
+
+function navigateToReplay() {
+  router.push('/replay')
+}
+
+function navigateToImportExport() {
+  router.push('/import-export')
+}
+
+function navigateToSettings() {
+  router.push('/settings')
 }
 </script>
 
@@ -32,7 +50,7 @@ const getGreeting = () => {
     <div class="grid grid-cols-2 gap-4">
       <!-- 棋谱记录 -->
       <div class="rounded-xl shadow-md overflow-hidden cursor-pointer transition-transform hover:scale-102"
-        style="background: linear-gradient(135deg, #48BB78 0%, #38A169 100%)">
+        style="background: linear-gradient(135deg, #48BB78 0%, #38A169 100%)" @click="navigateToRecord">
         <div class="p-4 text-white">
           <i class="pi pi-pencil text-xl mb-2"></i>
           <h3 class="text-lg font-bold">棋谱记录</h3>
@@ -41,7 +59,7 @@ const getGreeting = () => {
 
       <!-- 棋谱复盘 -->
       <div class="rounded-xl shadow-md overflow-hidden cursor-pointer transition-transform hover:scale-102"
-        style="background: linear-gradient(135deg, #4299E1 0%, #3182CE 100%)">
+        style="background: linear-gradient(135deg, #4299E1 0%, #3182CE 100%)" @click="navigateToReplay">
         <div class="p-4 text-white">
           <i class="pi pi-replay text-xl mb-2"></i>
           <h3 class="text-lg font-bold">棋谱复盘</h3>
@@ -50,7 +68,7 @@ const getGreeting = () => {
 
       <!-- 导入导出 -->
       <div class="rounded-xl shadow-md overflow-hidden cursor-pointer transition-transform hover:scale-102"
-        style="background: linear-gradient(135deg, #ED8936 0%, #DD6B20 100%)">
+        style="background: linear-gradient(135deg, #ED8936 0%, #DD6B20 100%)" @click="navigateToImportExport">
         <div class="p-4 text-white">
           <i class="pi pi-download text-xl mb-2"></i>
           <h3 class="text-lg font-bold">导入导出</h3>
@@ -59,7 +77,7 @@ const getGreeting = () => {
 
       <!-- 棋谱设置 -->
       <div class="rounded-xl shadow-md overflow-hidden cursor-pointer transition-transform hover:scale-102"
-        style="background: linear-gradient(135deg, #667EEA 0%, #5A67D8 100%)">
+        style="background: linear-gradient(135deg, #667EEA 0%, #5A67D8 100%)" @click="navigateToSettings">
         <div class="p-4 text-white">
           <i class="pi pi-cog text-xl mb-2"></i>
           <h3 class="text-lg font-bold">棋谱设置</h3>
