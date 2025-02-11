@@ -17,21 +17,33 @@ const router = createRouter({
       path: '/record',
       name: 'record',
       component: RecordView,
+      meta: {
+        title: '棋谱记录',
+      },
     },
     {
       path: '/replay',
       name: 'replay',
       component: ReplayView,
+      meta: {
+        title: '棋谱复盘',
+      },
     },
     {
       path: '/import-export',
       name: 'import-export',
       component: ImportExportView,
+      meta: {
+        title: '导入导出',
+      },
     },
     {
       path: '/settings',
       name: 'settings',
       component: SettingsView,
+      meta: {
+        title: '系统设置',
+      },
     },
   ],
 })

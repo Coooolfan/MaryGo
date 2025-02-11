@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
+import { computed } from 'vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -7,6 +8,11 @@ const route = useRoute()
 const handleBack = () => {
   router.back()
 }
+
+// 计算当前页面标题
+const pageTitle = computed(() => {
+  return route.meta.title || 'MaryGo'
+})
 </script>
 
 <template>
@@ -16,7 +22,10 @@ const handleBack = () => {
         <i v-if="route.path !== '/'" class="pi pi-angle-left cursor-pointer text-2xl" @click="handleBack" />
       </template>
       <template #content>
-        <p class="text-2xl font-bold text-black">MaryGo</p>
+        <p :class="[
+          'text-black',
+          pageTitle === 'MaryGo' ? 'text-2xl font-bold' : 'text-xl'
+        ]">{{ pageTitle }}</p>
       </template>
     </nut-navbar>
     <router-view />

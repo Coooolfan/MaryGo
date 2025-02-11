@@ -80,7 +80,7 @@ function navigateToSettings() {
         style="background: linear-gradient(135deg, #667EEA 0%, #5A67D8 100%)" @click="navigateToSettings">
         <div class="p-4 text-white">
           <i class="pi pi-cog text-xl mb-2"></i>
-          <h3 class="text-lg font-bold">棋谱设置</h3>
+          <h3 class="text-lg font-bold">系统设置</h3>
         </div>
       </div>
     </div>
