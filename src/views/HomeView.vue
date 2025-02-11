@@ -42,7 +42,7 @@ function navigateToSettings() {
       </nut-avatar>
       <div class="flex flex-col">
         <span class="text-lg font-bold">{{ getGreeting() }}☀️</span>
-        <span class="text-sm text-gray-500">今日记录棋局9场</span>
+        <span class="text-sm text-gray-500">今日记录棋局 9 场</span>
       </div>
     </div>
 
