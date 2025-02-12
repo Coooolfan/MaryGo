@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { showToast } from '@nutui/nutui'
+import { parseSGF } from '@/assets/utils/SGFParse'
 
 // 识别设置
 const useCloudComputing = ref(true)
@@ -38,10 +39,24 @@ const handleGameRuleSelectorConfirm = () => {
   showGameRuleSelector.value = false
 }
 
+
+function handleSGFParse() {
+  console.log('解析SGF文件……')
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.onchange = async () => {
+    if (input.files && input.files[0]) {
+      const text = await input.files[0].text()
+      console.log(parseSGF(text))
+    }
+  }
+  input.click()
+}
+
 </script>
 
 <template>
-  <div class="settings-view p-4">
+  <div class="p-4">
     <div class="mb-6">
       <h2 class="text-xl font-bold mb-4 text-gray-700">识别设置</h2>
       <div class="space-y-4">
@@ -87,6 +102,19 @@ const handleGameRuleSelectorConfirm = () => {
             <div class="text-sm text-gray-500 mt-1">启用后会在记录界面实时展示AI分析结果</div>
           </div>
           <nut-switch v-model="showAIAnalysis" active-color="#ff0000" />
+        </div>
+      </div>
+    </div>
+    <div class="h-px flex-grow bg-gray-200 mb-4"></div>
+    <div class="mb-6">
+      <h2 class="text-xl font-bold mb-4 text-gray-700">其他设置</h2>
+      <div class="space-y-4">
+        <div class="flex items-center justify-between p-3 gap-4">
+          <div>
+            <div class="text-base font-bold text-gray-800">SGF解析</div>
+            <div class="text-sm text-gray-500 mt-1">解析SGF格式文件并打印至终端</div>
+          </div>
+          <i class="pi pi-chevron-right text-gray-400" @click="handleSGFParse"></i>
         </div>
       </div>
     </div>
