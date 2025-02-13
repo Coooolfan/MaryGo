@@ -87,3 +87,25 @@ export function parseSGF(string: string): GoMatch {
   res.moves = positions.length - 1
   return res
 }
+
+export const DEFAULT_MATCH: GoMatch = {
+  id: '1739373119987',
+  date: '2024-03-22',
+  time: '10:45',
+  ruleType: '日本规则',
+  handicap: '4又1/2子',
+  result: {
+    winner: 'black',
+    method: '中盘胜',
+    points: '认输',
+  },
+  moves: 170,
+  size: 19,
+  timeUsed: {
+    black: '2小时10分钟',
+    white: '2小时20分钟',
+  },
+  positions: parseSGF(
+    '(;RU[jp]SZ[19]KM[6.5]HA[0];B[pd];W[dd];B[pq];W[dq];B[fc];W[df];B[co];W[ep];B[po];W[cl];B[ee];W[de];B[db];W[jp];B[dn];W[bp];B[fn];W[gp];B[dk];W[em];B[ck];W[dm];B[dh];W[fm];B[cc];W[fg];B[fe];W[dg];B[eh];W[ff];B[cg];W[gi];B[gj];W[fi];B[ej];W[ge];B[go];W[ho];B[gm];W[fo];B[en];W[gn];B[cm];W[bm];B[cn];W[dl];B[bl];W[bk];B[al];W[am];B[fl];W[ak];B[bl];W[al];B[el];W[bl];B[bn];W[an];B[ao];W[bj];B[hn];W[gl];B[go];W[fk];B[ek];W[gn];B[hm];W[fj];B[bi];W[cj];B[dj];W[ci];B[ch];W[bo];B[be];W[go];B[cp];W[bq];B[cq];W[cr];B[br];W[ar];B[ah];W[bs];B[gk];W[gc];B[ij];W[ii];B[ji];W[ih];B[jh];W[jg];B[ig];W[hg];B[if];W[jj];B[kj];W[hj];B[jk];W[hk];B[qj];W[kg];B[je];W[bf];B[af];W[ke];B[kd];W[le];B[ld];W[me];B[md];W[ne];B[oc];W[pe];B[qe];W[qf];B[ni];W[jd];B[id];W[qd];B[re];W[jc];B[ic];W[qc];B[hh];W[pc];B[hi];W[il];B[jm];W[im];B[jo];W[in];B[kp];W[qp];B[qq];W[pp];B[op];W[qo];B[oo];W[qh];B[pf];W[od];B[qg];W[ph];B[of];W[nh];B[rh];W[ri];B[rf];W[sh];B[sg];W[rg];B[di];W[ap];B[rh];W[bd];B[si];W[cd];B[nd]PB[柯洁]PW[卞相壹])',
+  ).positions,
+}
