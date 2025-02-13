@@ -1,9 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import RecordView from '../views/RecordView.vue'
-import ReplayView from '../views/ReplayView.vue'
-import ImportExportView from '../views/ImportExportView.vue'
-import SettingsView from '../views/SettingsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,7 +12,7 @@ const router = createRouter({
     {
       path: '/record',
       name: 'record',
-      component: RecordView,
+      component: () => import('@/views/RecordView.vue'),
       meta: {
         title: '棋谱记录',
       },
@@ -24,7 +20,7 @@ const router = createRouter({
     {
       path: '/replay',
       name: 'replay',
-      component: ReplayView,
+      component: () => import('@/views/ReplayView.vue'),
       meta: {
         title: '棋谱复盘',
       },
@@ -32,7 +28,7 @@ const router = createRouter({
     {
       path: '/import-export',
       name: 'import-export',
-      component: ImportExportView,
+      component: () => import('@/views/ImportExportView.vue'),
       meta: {
         title: '导入导出',
       },
@@ -40,7 +36,7 @@ const router = createRouter({
     {
       path: '/settings',
       name: 'settings',
-      component: SettingsView,
+      component: () => import('@/views/SettingsView.vue'),
       meta: {
         title: '系统设置',
       },
