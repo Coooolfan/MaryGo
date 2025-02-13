@@ -90,16 +90,16 @@ export function parseSGF(string: string): GoMatch {
 
 export const DEFAULT_MATCH: GoMatch = {
   id: '1739373119987',
-  date: '2024-03-22',
+  date: '2025-01-25',
   time: '10:45',
-  ruleType: '日本规则',
+  ruleType: '韩国规则',
   handicap: '4又1/2子',
   result: {
-    winner: 'black',
-    method: '中盘胜',
-    points: '认输',
+    winner: 'white',
+    method: '-',
+    points: '黑哨',
   },
-  moves: 170,
+  moves: 160,
   size: 19,
   timeUsed: {
     black: '2小时10分钟',
