@@ -5,7 +5,7 @@
 [![NutUI](https://img.shields.io/badge/NutUI-4.3.13-fa2a26)](https://nutui.jd.com/#/)
 [![PrimeIcons](https://img.shields.io/badge/primeicons-7.0.0-%41B883?logo=primevue)](https://primevue.org/icons/)
 
-围棋棋谱管理与复盘解决**方案**，专为移动设备优化的单页面应用
+围棋棋谱记录与复盘解决**方案**，专为移动设备优化的单页面应用
 
 ## ✨ 功能特性
 
