@@ -43,6 +43,64 @@ const handleCanvasClick = (e: MouseEvent) => {
   const pos = getGridPosition(e);
   if (pos && props.onClick) {
     props.onClick(pos.x, pos.y);
+
+    const board = structuredClone(props.boardState);
+    const color = board[pos.x][pos.y]
+    if (color !== 'x'){
+
+      const opponentColor = color === 'b' ? 'w' : 'b';
+      removeStonesWithoutLiberty(board, opponentColor);  // 提走对方的子
+      removeStonesWithoutLiberty(board, color);   // 提走自己的子
+    }
+  }
+};
+
+// 判断某个位置的棋子是否有气
+const hasLiberty = (board: ('b' | 'w' | 'x')[][], x: number, y: number, color: 'b' | 'w'): boolean => {
+  const visited = new Set<string>();
+  const stack = [{ x, y }];
+
+  while (stack.length > 0) {
+    const { x, y } = stack.pop()!;
+    const key = `${x},${y}`;
+
+    if (visited.has(key)) continue;
+    visited.add(key);
+
+    // 检查四个方向
+    const directions = [
+      { dx: -1, dy: 0 },
+      { dx: 1, dy: 0 },
+      { dx: 0, dy: -1 },
+      { dx: 0, dy: 1 },
+    ];
+
+    for (const { dx, dy } of directions) {
+      const nx = x + dx;
+      const ny = y + dy;
+
+      if (nx >= 0 && nx < props.size && ny >= 0 && ny < props.size) {
+        if (board[nx][ny] === 'x') return true; // 有气
+        if (board[nx][ny] === color) stack.push({ x: nx, y: ny });
+      }
+    }
+  }
+
+  return false; // 无气
+};
+
+// 提子逻辑
+const removeStonesWithoutLiberty = (board: ('b' | 'w' | 'x')[][], color: 'b' | 'w') => {
+  const toRemove = [];
+  for (let y = 0; y < props.size; y++) {
+    for (let x = 0; x < props.size; x++) {
+      if (board[x][y] === color && !hasLiberty(board, x, y, color)) {
+        toRemove.push({ x, y });
+      }
+    }
+  }
+  for (const { x, y } of toRemove) {
+    board[x][y] = 'x'; // 提子
   }
 };
 
@@ -78,6 +136,9 @@ const drawBoard = (ctx: CanvasRenderingContext2D) => {
   }
 
   ctx.stroke();
+
+  removeStonesWithoutLiberty(props.boardState, 'b');
+  removeStonesWithoutLiberty(props.boardState, 'w');
 
   // 绘制棋子
   for (let y = 0; y < props.size; y++) {
